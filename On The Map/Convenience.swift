@@ -25,6 +25,7 @@ extension Client {
             if let error = error {
 
                 completionHandlerForStudentLocations(result: nil, error: error)
+                
             } else {
                 
                 if let results = results[Client.Constants.JSONResponseKeys.StudentLocationResults] as? [[String:AnyObject]] {
