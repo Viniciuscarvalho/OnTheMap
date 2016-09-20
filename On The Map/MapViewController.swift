@@ -184,11 +184,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIApplicationDeleg
     }
 
     func failStudentLocations() {
-
+        
         let failDataAlert = UIAlertController(title: "Sorry", message: "There was a problem with retrieving Student Location data", preferredStyle: UIAlertControllerStyle.Alert)
         failDataAlert.addAction(UIAlertAction(title: "I'll Come Back Later", style: UIAlertActionStyle.Default, handler: nil))
         failDataAlert.addAction(UIAlertAction(title: "Leave Feedback", style: UIAlertActionStyle.Default, handler: { alertAction in
-            UIApplication.sharedApplication().openURL(NSURL(string : "mailto:mnienaber@google.com")!)
+            UIApplication.sharedApplication().openURL(NSURL(string : "mailto:viniciuscarvalho@google.com")!)
             failDataAlert.dismissViewControllerAnimated(true, completion: nil)
         self.presentViewController(failDataAlert, animated: true, completion: nil)
         }))
