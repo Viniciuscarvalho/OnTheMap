@@ -144,10 +144,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIApplicationDeleg
 
                 if errorString != nil {
 
-                    performUIUpdatesOnMain{
-
-                        self.failStudentLocations()
-
+                    performUIUpdatesOnMain {
+                        
+                         self.failAlertGeneral("Attention", message: "There was a problem with retrieving Student Location data", actionTitle: "OK")
+                        
                     }
                 } else {
 
@@ -183,17 +183,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIApplicationDeleg
         refresh()
     }
 
-    func failStudentLocations() {
-        
-        let failDataAlert = UIAlertController(title: "Sorry", message: "There was a problem with retrieving Student Location data", preferredStyle: UIAlertControllerStyle.Alert)
-        failDataAlert.addAction(UIAlertAction(title: "I'll Come Back Later", style: UIAlertActionStyle.Default, handler: nil))
-        failDataAlert.addAction(UIAlertAction(title: "Leave Feedback", style: UIAlertActionStyle.Default, handler: { alertAction in
-            UIApplication.sharedApplication().openURL(NSURL(string : "mailto:viniciuscarvalho@google.com")!)
-            failDataAlert.dismissViewControllerAnimated(true, completion: nil)
-        self.presentViewController(failDataAlert, animated: true, completion: nil)
-        }))
-    }
-
     func logOut() {
 
         Client.sharedInstance().deleteSession() { (result, error) in
@@ -201,6 +190,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIApplicationDeleg
             if error != nil {
 
                 self.failAlertGeneral("LogOut Unsuccessful", message: "Something went wrong, please try again", actionTitle: "OK")
+                
             } else {
 
                 performUIUpdatesOnMain {
